@@ -235,6 +235,44 @@ input[type=range]{width:100%;accent-color:var(--lemon);height:28px}
 .mtabs button[aria-selected="true"]{background:var(--lemon);color:var(--navy);border-color:var(--lemon)}
 .mpanel{margin-top:16px;background:rgba(255,255,255,.06);border-radius:18px;padding:22px 24px;font-size:18px;min-height:96px}
 
+
+/* stage 2 engines */
+.engines{display:grid;grid-template-columns:1fr 280px;gap:16px;align-items:stretch}
+.lane{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:20px 22px;transition:opacity .25s,border-color .25s,box-shadow .25s}
+.lane .tagl{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.lane.a .tagl{color:var(--coral)} .lane.b .tagl{color:#2E6BD6}
+.flow{display:flex;align-items:stretch;gap:10px;margin-top:12px}
+.flow .step{flex:1;border-radius:14px;padding:14px 16px;font-weight:600;font-size:15.5px;line-height:1.3}
+.lane.a .step{background:#FFF0E9}.lane.b .step{background:#EAF1FD}
+.flow .step small{display:block;font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.06em;margin-bottom:6px;color:var(--muted)}
+.flow .arr{align-self:center;font-family:var(--mono);font-weight:700;color:var(--muted)}
+.hub{grid-row:span 2;background:var(--navy);color:var(--on-dark);border-radius:22px;padding:24px;display:flex;flex-direction:column;justify-content:center;gap:10px}
+.hub b{font-family:var(--display);font-size:clamp(46px,5vw,64px);line-height:1;color:var(--lemon)}
+.hub small{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--on-dark-muted)}
+.engines.fa .lane.b,.engines.fb .lane.a{opacity:.35}
+.engines.fa .lane.a{border-color:var(--coral);box-shadow:0 0 0 2px var(--coral)}
+.engines.fb .lane.b{border-color:#2E6BD6;box-shadow:0 0 0 2px #2E6BD6}
+@media (max-width:860px){.engines{grid-template-columns:1fr}.hub{grid-row:auto}.flow{flex-direction:column}.flow .arr{transform:rotate(90deg)}}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+.kpis div{border-top:2px solid var(--navy);padding-top:10px}
+.kpis b{display:block;font-family:var(--display);font-size:clamp(26px,3vw,36px);line-height:1.05}
+.kpis span{font-size:14.5px;color:var(--muted)}
+@media (max-width:760px){.kpis{grid-template-columns:1fr 1fr}}
+.loop{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;margin-top:clamp(48px,7vw,80px)}
+.ring{position:relative;width:min(460px,100%);aspect-ratio:1;margin-inline:auto}
+.ring svg{position:absolute;inset:0;width:100%;height:100%}
+.node{all:unset;position:absolute;width:112px;margin-left:-56px;margin-top:-30px;text-align:center;cursor:pointer;font-weight:700;font-size:14px;line-height:1.2;padding:10px 8px;border-radius:14px;background:var(--paper);border:1.5px solid var(--line);transition:background .25s,color .25s,transform .25s}
+.node span{display:block;font-family:var(--mono);font-size:11px;color:var(--coral)}
+.node[aria-pressed="true"]{background:var(--coral);color:#fff;border-color:var(--coral);transform:scale(1.08)}
+.node[aria-pressed="true"] span{color:#FFE3D8}
+.ring .core{position:absolute;inset:32%;border-radius:50%;background:var(--navy);color:var(--on-dark);display:grid;place-items:center;text-align:center;padding:12px;font-family:var(--display);font-weight:700;font-size:clamp(15px,1.6vw,19px);line-height:1.15}
+.loopcard{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:24px 26px;min-height:150px}
+.loopcard h3{font-size:26px;margin:6px 0 8px}
+.loopcard p{color:var(--muted)}
+.brief{margin-top:16px;background:#1F2E3F;color:#EAF1F7;border-radius:18px 18px 18px 4px;padding:18px 20px;font-size:16px;line-height:1.5}
+.brief small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--lemon);margin-bottom:6px}
+@media (max-width:860px){.loop{grid-template-columns:1fr}.node{width:96px;margin-left:-48px;font-size:12.5px}}
+
 /* angles + film */
 .angles{display:grid;grid-template-columns:1fr 330px;gap:clamp(20px,4vw,48px);align-items:start}
 .ang{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
@@ -306,7 +344,7 @@ footer{padding-block:28px;font-family:var(--mono);font-size:12px;color:var(--on-
   <div class="wrap">
     <div class="brand"><b>SHOWFLOOR</b> × NAPLES SOAP CO.</div>
     <nav aria-label="Sections">
-      <a href="#market">Market</a><a href="#brand">Your brand</a><a href="#numbers">Numbers</a><a href="#plan">Plan</a><a href="#offer">Offer</a>
+      <a href="#market">Market</a><a href="#brand">Your brand</a><a href="#numbers">Numbers</a><a href="#plan">Plan</a><a href="#stage2">Stage 2</a><a href="#offer">Offer</a>
     </nav>
   </div>
   <div class="progress" id="progress"></div>
@@ -562,7 +600,7 @@ footer{padding-block:28px;font-family:var(--mono);font-size:12px;color:var(--on-
     <div class="head"><p class="eyebrow">The plan</p><h2 class="h2">Traffic first. Studio second.</h2><p class="lede">In H1 2026, shoppable video drove 40% of U.S. TikTok Shop sales and LIVE 8%. Videos build the audience that makes livestreams pay.</p></div>
     <div class="stages">
       <div class="stg"><small>MONTHS 1–2</small><h3>Build an army of affiliates</h3><p>Open the Shop, recruit hundreds of creators, ship samples, fill the feed with your products.</p></div>
-      <div class="stg"><small>MONTHS 2–3</small><h3>Scale what sells</h3><p>Double down on the creators, products and videos that convert. Test bundles. Amplify the best content.</p></div>
+      <div class="stg"><small>MONTHS 2–3</small><h3>Scale winners to Meta</h3><p>Winning TikTok videos go into GMV Max, then into Meta ads — plus a separate Meta creator program and a remake loop. <a href="#stage2" style="color:var(--lemon)">How it works ↓</a></p></div>
       <div class="stg"><small>MONTHS 3–4</small><h3>Go live every day</h3><p>A Naples Soap corner in our Naples studio and daily lives on TikTok Shop, Whatnot, Instagram, Facebook and YouTube.</p></div>
     </div>
     <div class="months">
@@ -574,6 +612,70 @@ footer{padding-block:28px;font-family:var(--mono);font-size:12px;color:var(--on-
     <p class="src">Momentum Works, TikTok Shop in the U.S. H1 2026 (51.4% Shop, 40.4% video, 8.2% LIVE). Live launch timing depends on studio readiness, hosts, inventory and early results.</p>
   </div>
 </section>
+
+
+<!-- STAGE 2 -->
+<section id="stage2">
+  <div class="wrap">
+    <div class="head"><p class="eyebrow">Stage 2 · Scale to Meta</p><h2 class="h2">Two creator engines, one ad account</h2><p class="lede">TikTok Shop finds the videos that sell. Meta scales them. A second, Meta-only creator program keeps hundreds of fresh ads coming every month — so the account never runs out of creative.</p></div>
+    <div class="seg" role="group" aria-label="Highlight a flow" style="margin-bottom:14px">
+      <button type="button" data-f="" aria-pressed="true">Both flows</button>
+      <button type="button" data-f="fa" aria-pressed="false">Flow 1 · TikTok Shop</button>
+      <button type="button" data-f="fb" aria-pressed="false">Flow 2 · Meta creators</button>
+    </div>
+    <div class="engines" id="engines">
+      <div class="lane a">
+        <p class="tagl">Flow 1 · TikTok Shop → Meta</p>
+        <div class="flow">
+          <div class="step"><small>01</small>Thousands of affiliate creators post on TikTok Shop</div><span class="arr">→</span>
+          <div class="step"><small>02</small>Winning videos scale with GMV Max ads</div><span class="arr">→</span>
+          <div class="step"><small>03</small>The same winners are uploaded to Meta and scaled</div>
+        </div>
+      </div>
+      <div class="hub" aria-label="Naples Soap Meta ad account">
+        <small>YOUR META AD ACCOUNT</small>
+        <b>400–1,000</b>
+        <p>active ads at a time — the target that lets a brand scale spend without burning out creative.</p>
+      </div>
+      <div class="lane b">
+        <p class="tagl">Flow 2 · Meta creator program</p>
+        <div class="flow">
+          <div class="step"><small>01</small>Hundreds of creators join for Meta-only commissions</div><span class="arr">→</span>
+          <div class="step"><small>02</small>They send paid-partnership ad requests, copying the TikTok winners</div><span class="arr">→</span>
+          <div class="step"><small>03</small>Hundreds of new creator ads every month</div>
+        </div>
+      </div>
+    </div>
+    <div class="kpis">
+      <div><b>Thousands</b><span>TikTok Shop affiliates</span></div>
+      <div><b>Hundreds</b><span>Meta program creators</span></div>
+      <div><b>Hundreds / mo</b><span>new creator videos</span></div>
+      <div><b>400–1,000</b><span>active Meta ads (target)</span></div>
+    </div>
+
+    <div class="loop">
+      <div>
+        <p class="eyebrow">The remake loop</p>
+        <h3 class="h2" style="font-size:clamp(30px,3.6vw,46px);margin-top:12px">Take a winner. Ask the community to remake it. Put money behind every remake.</h3>
+        <div class="loopcard" style="margin-top:22px" aria-live="polite">
+          <p class="eyebrow" id="lpN">Step 1 of 5</p>
+          <h3 id="lpT">Find the winner</h3>
+          <p id="lpD">One ad pulls ahead — for example, thousands of sales at a 6x return on ad spend from a single creator.</p>
+        </div>
+        <div class="brief">
+          <small>SAMPLE MESSAGE TO THE CREATOR GROUP</small>
+          "This ad from @[creator] drove [10K] sales at [6x] ROAS. Remake it in your own style and send it to us. We'll run it from the Naples Soap account as a paid collab ad with dedicated budget behind you — and you get paid right away."
+        </div>
+      </div>
+      <div class="ring" id="ring">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="38" fill="none" stroke="#E6D9C4" stroke-width="1.2" stroke-dasharray="2 2"/><circle id="arc" cx="50" cy="50" r="38" fill="none" stroke="#F2643D" stroke-width="1.6" stroke-linecap="round" pathLength="100" stroke-dasharray="20 100" transform="rotate(-90 50 50)" style="transition:stroke-dasharray .5s ease"/></svg>
+        <div class="core">Feedback loop<br>= the engine</div>
+      </div>
+    </div>
+    <p class="src">Figures such as 400–1,000 active ads are operating targets for the programme, not guaranteed results. Creator commissions and ad budgets are agreed with Naples Soap in advance.</p>
+  </div>
+</section>
+<div class="tiles" aria-hidden="true"></div>
 
 <!-- ANGLES -->
 <section>
@@ -714,7 +816,7 @@ footer{padding-block:28px;font-family:var(--mono);font-size:12px;color:var(--on-
   // calculator
   let price=12.95;const comm=$('#comm'),cac=$('#cac');
   const calc=()=>{
-    const c=+comm.value/100,fee=price*.06,com=price*c,our=price*.10,left=price-fee-com-our;
+    const r2=x=>Math.round(x*100)/100,c=+comm.value/100,fee=r2(price*.06),com=r2(price*c),our=r2(price*.10),left=r2(price-fee-com-our);
     $('#commOut').textContent=comm.value+'%';$('#cacOut').textContent=money(+cac.value);
     $('#lPrice').textContent=money(price);$('#lFee').textContent='−'+money(fee);$('#lCom').textContent='−'+money(com);$('#lOur').textContent='−'+money(our);$('#lLeft').textContent=money(left);
     const seg=(id,val,lab)=>{const el=$(id);el.style.flexBasis=(val/price*100)+'%';el.textContent=(val/price>.09)?lab:''};
@@ -724,15 +826,34 @@ footer{padding-block:28px;font-family:var(--mono);font-size:12px;color:var(--on-
       ? 'A creator sale costs <b>'+money(com)+'</b>. Your ad costs <b>'+money(+cac.value)+'</b>. The creator route keeps <b>'+money(diff)+'</b> more per order — and you pay nothing until it sells.'
       : 'At this commission a creator costs <b>'+money(com)+'</b>, more than your <b>'+money(+cac.value)+'</b> ad. Lower the rate or lead with the bundle.';
   };
-  $$('.seg button').forEach(b=>b.addEventListener('click',()=>{$$('.seg button').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');price=+b.dataset.price;calc()}));
+  $$('.calc .seg button').forEach(b=>b.addEventListener('click',()=>{$$('.calc .seg button').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');price=+b.dataset.price;calc()}));
   comm.addEventListener('input',calc);cac.addEventListener('input',calc);calc();
 
   // months
   const M=['Open the Shop, choose launch products, write creator briefs, start outreach, ship the first samples, set up support and reporting.',
-    'Grow the affiliate network and the content volume. Find the products, creators and messages that sell.',
-    'Keep scaling affiliates. Build the Naples Soap corner, train hosts, design show formats and the production workflow.',
+    'Grow the affiliate network and the content volume. Push winning videos into GMV Max and start moving them into Meta ads.',
+    'Launch the Meta creator program and the remake loop. Keep scaling affiliates. Build the Naples Soap corner and train hosts.',
     'Launch the studio and move to a daily livestream schedule, fed by the affiliate engine.'];
   $$('.mtabs button').forEach(b=>b.addEventListener('click',()=>{$$('.mtabs button').forEach(x=>x.setAttribute('aria-selected','false'));b.setAttribute('aria-selected','true');$('#mpanel').textContent=M[+b.dataset.m]}));
+
+
+  // stage 2 flows
+  $$('#stage2 .seg button').forEach(b=>b.addEventListener('click',()=>{$$('#stage2 .seg button').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');$('#engines').className='engines '+b.dataset.f}));
+  // remake loop
+  const L=[
+    ['Find the winner','One ad pulls ahead — for example, thousands of sales at a 6x return on ad spend from a single creator.'],
+    ['Brief the community','We post that exact ad to the creator group with one ask: remake this one.'],
+    ['Creators remake it','Dozens copy the structure in their own voice and send the videos in.'],
+    ['Launch as paid collab','Each remake runs from the Naples Soap account as a partnership ad with dedicated budget. Creators get paid right away.'],
+    ['Feed the data back','Results pick the next winner and shape the next brief. That feedback loop is what makes the system work.']
+  ];
+  const ring=$('#ring');let li=0,timer=null;
+  L.forEach((l,i)=>{const a=-Math.PI/2+i*2*Math.PI/L.length;const b=document.createElement('button');b.type='button';b.className='node';b.style.left=(50+38*Math.cos(a))+'%';b.style.top=(50+38*Math.sin(a))+'%';b.innerHTML='<span>0'+(i+1)+'</span>'+l[0];b.setAttribute('aria-pressed',i===0?'true':'false');b.addEventListener('click',()=>{stop();setL(i)});ring.appendChild(b)});
+  const nodes=[...ring.querySelectorAll('.node')];
+  function setL(i){li=i;nodes.forEach((n,k)=>n.setAttribute('aria-pressed',k===i?'true':'false'));$('#lpN').textContent='Step '+(i+1)+' of '+L.length;$('#lpT').textContent=L[i][0];$('#lpD').textContent=L[i][1];$('#arc').setAttribute('stroke-dasharray',((i+1)*20)+' 100')}
+  function stop(){if(timer){clearInterval(timer);timer=null}}
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){timer=setInterval(()=>setL((li+1)%L.length),3600)}
+  setL(0);
 
   // angles
   $$('#ang button').forEach(b=>b.addEventListener('click',()=>{$$('#ang button').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');$('#hook').innerHTML='<b style="font-family:var(--mono);font-size:12px;letter-spacing:.1em">OPENING LINE</b><br>'+b.dataset.h}));
